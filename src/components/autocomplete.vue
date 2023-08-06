@@ -59,7 +59,7 @@ export default {
 
       if (typeof google.maps.places.Autocomplete !== 'function') {
         throw new Error(
-          "google.maps.places.Autocomplete is undefined. Did you add 'places' to libraries when loading Google Maps?"
+          "google.maps.places.Autocomplete is undefined. Did you add 'places' to libraries when loading Google Maps???????"
         )
       }
 
