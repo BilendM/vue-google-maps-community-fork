@@ -46,11 +46,11 @@ export default {
       // get correct input from fallback or slot
       let refInput = _this.$refs.input
       if (_this.$slots.input) {
-        const refName = _this.$slots.input()[0].props.ref;
+        const refName = _this.$slots.input()[0].props.ref
         console.log("TEXT",refName.value)
-        const scopedInput = _this.$slots.input()[0].ref.i.ctx.$refs[refName.value]
+        const scopedInput = _this.$slots.input()[0].ref.i.ctx.$refs[refName]
         if (scopedInput) {
-          refInput = scopedInput;
+          refInput = scopedInput[0].$el.getElementsByTagName('input')[0];
           if(refInput.tagName.toLowerCase() !== 'input') {
             const inputs = refInput.querySelectorAll('input')
             if(inputs.length == 0) {
