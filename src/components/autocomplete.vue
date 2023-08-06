@@ -47,7 +47,7 @@ export default {
       let refInput = _this.$refs.input
       if (_this.$slots.input) {
         const refName = _this.$slots.input()[0].props.ref
-        console.log("TEXT",refName.value)
+        console.log("TEXT",refName)
         const scopedInput = _this.$slots.input()[0].ref.i.ctx.$refs[refName]
         if (scopedInput) {
           refInput = scopedInput[0].$el.getElementsByTagName('input')[0];
