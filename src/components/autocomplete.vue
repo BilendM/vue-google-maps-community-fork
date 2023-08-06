@@ -45,6 +45,7 @@ export default {
     this.$gmapApiPromiseLazy().then(() => {
       // get correct input from fallback or slot
       let refInput = _this.$refs.input
+      //Hello this is a test
       if (_this.$slots.input) {
         const refName = _this.$slots.input()[0].props.ref
         const scopedInput = _this.$slots.input()[0].ref.i.ctx.$refs[refName]
