@@ -44,25 +44,25 @@ export default {
     const _this = this
     this.$gmapApiPromiseLazy().then(() => {
       // get correct input from fallback or slot
-      let refInput = _this.$refs.input
+      let refInput = _this.$refs.input?.value; // Access the value property of the ref object
       if (_this.$slots.input) {
-        const refName = _this.$slots.input()[0].props.ref
-        console.log("TEXT",refName)
-        const scopedInput = _this.$slots.input()[0].ref.i.ctx.$refs[refName]
+        const refName = _this.$slots.input()[0].props.ref;
+        console.log("TEXT", refName);
+        const scopedInput = _this.$slots.input()[0].ref.i.ctx.$refs[refName]?.value; // Access the value property of the ref object
         if (scopedInput) {
           refInput = scopedInput[0].$el.getElementsByTagName('input')[0];
           if(refInput.tagName.toLowerCase() !== 'input') {
-            const inputs = refInput.querySelectorAll('input')
+            const inputs = refInput.querySelectorAll('input');
             if(inputs.length == 0) {
-              console.error('No input tag found inside ref "'+refName+'"')
+              console.error('No input tag found inside ref "'+refName+'"');
             } else {
-              refInput = inputs[0]
+              refInput = inputs[0];
             }
           } else {
             refInput = scopedInput.$el.querySelectorAll('input')[0];
           }
         } else {
-          console.error("Failed to find scopedInput (element with ref='"+refName+"')")
+          console.error("Failed to find scopedInput (element with ref='"+refName+"')");
         }
       }
       if (this.selectFirstOnEnter) {
