@@ -51,7 +51,7 @@ export default {
         if (scopedInput) {
           refInput = scopedInput[0].$el.getElementsByTagName('input')[0]
         }
-    }
+      }
       if (this.selectFirstOnEnter) {
         downArrowSimulator(refInput)
       }
