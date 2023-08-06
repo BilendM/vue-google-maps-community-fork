@@ -45,12 +45,23 @@ export default {
     this.$gmapApiPromiseLazy().then(() => {
       // get correct input from fallback or slot
       let refInput = _this.$refs.input
-      //Hello this is a test
       if (_this.$slots.input) {
-        const refName = _this.$slots.input()[0].props.ref
+        const refName = _this.$slots.input()[0].props.ref;
         const scopedInput = _this.$slots.input()[0].ref.i.ctx.$refs[refName]
         if (scopedInput) {
-          refInput = scopedInput[0].$el.getElementsByTagName('input')[0]
+          refInput = scopedInput;
+          if(refInput.tagName.toLowerCase() !== 'input') {
+            const inputs = refInput.querySelectorAll('input')
+            if(inputs.length == 0) {
+              console.error('No input tag found inside ref "'+refName+'"')
+            } else {
+              refInput = inputs[0]
+            }
+          } else {
+            refInput = scopedInput.$el.querySelectorAll('input')[0];
+          }
+        } else {
+          console.error("Failed to find scopedInput (element with ref='"+refName+"')")
         }
       }
       if (this.selectFirstOnEnter) {
